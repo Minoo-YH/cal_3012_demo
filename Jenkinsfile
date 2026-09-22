@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage ('check'){
             steps{
-                git 'https://github.com/Minoo-YH/jenkin-test.git'
+                git 'https://github.com/Minoo-YH/cal_3012_demo.git'
             }
         }
         stage ('build'){
