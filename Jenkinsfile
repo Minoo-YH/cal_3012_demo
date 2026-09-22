@@ -1,30 +1,27 @@
 pipeline {
     agent any
-
     tools {
-        maven 'Maven'
+        maven 'Maven3'
     }
-
     stages {
-        stage('check'){
-            steps {
-               git 'https://github.com/ADirin/cal_3012_demo.git'
+        stage ('check'){
+            steps{
+                git 'https://github.com/Minoo-YH/jenkin-test.git'
             }
         }
-        stage('build') {
-            steps {
+        stage ('build'){
+            steps{
                 bat 'mvn clean install'
             }
         }
 
-        stage('Test') {
-            steps {
+        stage('test') {
+            steps{
                 bat 'mvn test'
             }
         }
-
-        stage('JaCoCo') {
-            steps {
+        stage('jacoco'){
+            steps{
                 jacoco()
             }
         }
