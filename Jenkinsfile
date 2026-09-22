@@ -1,27 +1,32 @@
 pipeline {
     agent any
-        stages {
-        stage ('check'){
-            steps{
-                git 'https://github.com/ADirin/cal_3012_demo.git'
+
+    tools {
+        maven 'Maven'
+    }
+
+    stages {
+        stage('check'){
+            steps {
+               git 'https://github.com/ADirin/cal_3012_demo.git'
             }
         }
-        stage ('build'){
-            steps{
+        stage('build') {
+            steps {
                 bat 'mvn clean install'
             }
         }
 
-        stage('test') {
-            steps{
+        stage('Test') {
+            steps {
                 bat 'mvn test'
             }
         }
-        stage('jacoco'){
-            steps{
+
+        stage('JaCoCo') {
+            steps {
                 jacoco()
             }
         }
-
     }
 }
